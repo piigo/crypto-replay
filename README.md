@@ -3,11 +3,13 @@
 Local Docker app with TradingView-style bar replay for BTCUSDT Spot.
 
 ## Stack
+
 - Backend: Node.js + TypeScript + Express
 - Frontend: React + TypeScript + lightweight-charts
 - Database: PostgreSQL
 
 ## Features
+
 - Candlestick chart with time axis (date/time on bottom)
 - Replay mode:
   - Set replay vertical line on chart
@@ -38,23 +40,22 @@ Local Docker app with TradingView-style bar replay for BTCUSDT Spot.
   - Sync re-fetches one previous candle to reduce edge gaps
 
 ## Run
+
 ```bash
 docker compose up --build
 ```
 
 Open:
+
 - Frontend: http://localhost:5173
 - Backend health: http://localhost:3001/api/health
 
 ## Screenshot
-Add an app screenshot at:
-`docs/images/app-screenshot.png`
-
-Then it will render here:
 
 ![Crypto Replay App](docs/images/app-screenshot.png)
 
 ## First use
+
 1. Choose interval.
 2. Click `Sync Missing Data`.
 3. Set replay point with `Set Replay Start`, click chart.
@@ -63,5 +64,6 @@ Then it will render here:
 6. Click any saved drawing to open context toolbar and manage/delete it.
 
 ## Notes
+
 - Current scope: single symbol `BTCUSDT`, no auth, local usage only.
 - Drawings are shared globally for `BTCUSDT` and remain after restart.
