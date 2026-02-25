@@ -46,6 +46,14 @@ Open:
 - Frontend: http://localhost:5173
 - Backend health: http://localhost:3001/api/health
 
+## Screenshot
+Add an app screenshot at:
+`docs/images/app-screenshot.png`
+
+Then it will render here:
+
+![Crypto Replay App](docs/images/app-screenshot.png)
+
 ## First use
 1. Choose interval.
 2. Click `Sync Missing Data`.
