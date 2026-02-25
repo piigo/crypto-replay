@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: crypto_replay
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      PORT: 3001
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/crypto_replay
+      BINANCE_BASE_URL: https://api.binance.com
+    depends_on:
+      - db
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend/src:/app/src
+
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      VITE_API_URL: http://localhost:3001
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend/src:/app/src
+
+volumes:
+  postgres_data:
